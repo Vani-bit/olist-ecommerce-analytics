@@ -1,9 +1,3 @@
-
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS
--- File: 05_product_analysis.sql
--- ==========================================
-
 -- QUERY 1: Top 10 Product Categories by Sales Value
 SELECT
     COALESCE(

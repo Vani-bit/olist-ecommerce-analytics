@@ -1,9 +1,5 @@
+-- Initial Dataset Exploration
 
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS PROJECT
--- File: 01_data_exploration.sql
--- Purpose: Initial Dataset Exploration
--- ==========================================
 
 -- 1. Total rows in each table
 SELECT 'customers' AS table_name, COUNT(*) AS total_rows FROM customers

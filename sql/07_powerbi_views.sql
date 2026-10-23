@@ -1,12 +1,7 @@
-
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS
--- File: 07_powerbi_views.sql
--- Purpose: Power BI Reporting Datasets
--- ==========================================
+-- Power BI Reporting Datasets
 
 
--- VIEW 1: Order-Level Sales Summary
+-- Order-Level Sales Summary
 -- One row per order to prevent payment duplication
 
 CREATE OR REPLACE VIEW vw_order_summary AS
@@ -51,7 +46,7 @@ LEFT JOIN item_totals i
     ON o.order_id = i.order_id;
 
 
--- VIEW 2: Product Category Sales
+-- Product Category Sales
 -- One row per category
 
 CREATE OR REPLACE VIEW vw_category_sales AS
@@ -76,7 +71,7 @@ WHERE o.order_status = 'delivered'
 GROUP BY 1;
 
 
--- VIEW 3: Customer Purchase Summary
+-- Customer Purchase Summary
 -- One row per unique customer
 
 CREATE OR REPLACE VIEW vw_customer_summary AS
@@ -96,7 +91,7 @@ JOIN orders o
 GROUP BY c.customer_unique_id;
 
 
--- VIEW 4: Delivery Performance
+-- Delivery Performance
 -- One row per delivered order
 
 CREATE OR REPLACE VIEW vw_delivery_performance AS
@@ -130,9 +125,7 @@ WHERE o.order_status = 'delivered'
   AND o.order_estimated_delivery_date IS NOT NULL;
 
 
--- ==========================================
 -- VALIDATION: Confirm Views Have Data
--- ==========================================
 
 SELECT 'vw_order_summary' AS view_name,
        COUNT(*) AS total_rows
@@ -155,3 +148,35 @@ UNION ALL
 SELECT 'vw_delivery_performance',
        COUNT(*)
 FROM vw_delivery_performance;
+
+
+-- Order-level category sales for Power BI
+-- Each row represents one order and product category
+
+CREATE OR REPLACE VIEW vw_order_category_sales AS
+SELECT
+    oi.order_id,
+    COALESCE(
+        t.product_category_name_english,
+        p.product_category_name,
+        'Unknown'
+    ) AS category,
+    COUNT(*) AS items_sold,
+    ROUND(SUM(oi.price), 2) AS sales_value
+FROM order_items oi
+JOIN orders o
+    ON oi.order_id = o.order_id
+JOIN products p
+    ON oi.product_id = p.product_id
+LEFT JOIN product_category_translation t
+    ON p.product_category_name =
+       t.product_category_name
+WHERE o.order_status = 'delivered'
+GROUP BY
+    oi.order_id,
+    COALESCE(
+        t.product_category_name_english,
+        p.product_category_name,
+        'Unknown'
+    );
+

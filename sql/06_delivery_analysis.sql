@@ -1,9 +1,3 @@
-
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS
--- File: 06_delivery_analysis.sql
--- ==========================================
-
 -- QUERY 1: Average Delivery Time (Days)
 SELECT
     ROUND(

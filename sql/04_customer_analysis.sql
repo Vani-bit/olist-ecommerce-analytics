@@ -1,9 +1,4 @@
-
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS PROJECT
--- File: 04_customer_analysis.sql
--- Purpose: Customer Behavior Analysis
--- ==========================================
+-- Customer Behavior Analysis
 
 
 -- QUERY 1: Total Unique Customers

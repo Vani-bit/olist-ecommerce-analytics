@@ -1,0 +1,7 @@
+﻿\copy order_payments FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_order_payments_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy order_items FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_order_items_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy products FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_products_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy sellers FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_sellers_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy order_reviews FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_order_reviews_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy product_category_translation FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/product_category_name_translation.csv' WITH (FORMAT csv, HEADER true, NULL '')
+\copy geolocation FROM 'C:/Users/vuvss/OneDrive/Desktop/olist_ecommerce/olist_geolocation_dataset.csv' WITH (FORMAT csv, HEADER true, NULL '')

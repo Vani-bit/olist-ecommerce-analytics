@@ -1,9 +1,3 @@
-
--- ==========================================
--- OLIST E-COMMERCE ANALYTICS
--- 03: SALES ANALYSIS
--- ==========================================
-
 -- KPI 1: Total Recorded Payment Value
 SELECT
     ROUND(SUM(payment_value), 2)
